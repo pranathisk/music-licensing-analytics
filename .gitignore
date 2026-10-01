@@ -13,8 +13,8 @@ data/audio/noise/
 # (data/audio/simulated_events/ is committed: ~8.5 MB, so the test recordings can be played.)
 data/ccmixter_metadata.json
 
-# SQLite database is rebuilt by the pipeline
-db/*.db
+# SQLite database: db/licensing.db IS committed (~1 MB) so the deployed app works
+# without the raw audio; run_pipeline.sh rebuilds it.
 db/*.db-shm
 db/*.db-wal
 db/*.db-journal

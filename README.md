@@ -24,8 +24,24 @@ stitched together.
 > venues, licensees and licenses in this repo are fictional. It is a portfolio demonstration of the
 > technique real monitoring services use.
 
+## Known limitations
+
+Before you read the results:
+
+- **Small.** 47 catalog tracks and 14 test recordings.
+- **Simulated.** Every venue recording was made by mixing catalog excerpts with real crowd and talking
+  noise, reverb, a phone-style filter and MP3 compression. None is a real phone recording at a real
+  venue, and the detector hasn't been tried on one yet.
+- **The test set is too small for an accuracy claim.** The held-out set has 6 track appearances and 2
+  no-music controls. Getting all of them right is a smoke test, not "100% accuracy". On the tuning set
+  the detector had one miss and one false alarm. The more useful result is the
+  [noise stress test](#results), which shows where detection breaks down.
+- **Rule-based tags.** Mood and instrumental tags come from rules applied to the uploaders' own
+  ccMixter tags, not from listening or a trained model.
+
 ## Contents
 
+- [Known limitations](#known-limitations)
 - [Catalog and licensing](#catalog-and-licensing)
 - [Setup and reproduction](#setup-and-reproduction)
 - [Database](#database)
@@ -66,12 +82,18 @@ stitched together.
 ## Setup and reproduction
 
 Requires Python 3.12 (tested), plus two command-line tools: `fpcalc` (Chromaprint 1.6) and `ffmpeg`.
+`requirements.txt` has what the app and pipeline need. `requirements-dev.txt` adds pytest and the
+notebook tooling.
+
+**Just the app, no downloads:** the database (~1 MB), the simulated recordings and 30 s preview clips
+are committed, so `pip install -r requirements.txt && streamlit run app.py` works on a fresh clone as
+long as `fpcalc` and `ffmpeg` are installed.
 
 ```bash
 brew install chromaprint ffmpeg            # macOS; on Debian/Ubuntu: apt install libchromaprint-tools ffmpeg
 python3.12 -m venv .venv                   # or: uv venv --python 3.12 .venv
-.venv/bin/pip install -r requirements.txt  # or: uv pip install --python .venv -r requirements.txt
-./run_pipeline.sh                          # downloads, builds the DB, runs both modules, tests
+.venv/bin/pip install -r requirements-dev.txt   # app + pipeline + tests/notebook
+./run_pipeline.sh                               # downloads, builds the DB, runs both modules, tests
 ```
 
 `run_pipeline.sh` runs every step in order, and every file in `results/` comes from it. On an M-series
@@ -109,7 +131,12 @@ a time:
   numbers.
 
 The app only reads the database and never writes detections, so `results/` stays the output of
-`run_pipeline.sh`.
+`run_pipeline.sh`. Without the full catalog audio (for example when deployed), the app plays the
+committed 30 s previews in `data/audio/previews/`.
+
+**Deploying (Streamlit Community Cloud).** `packages.txt` installs `ffmpeg` and `libchromaprint-tools`
+(which provides `fpcalc`), and `requirements.txt` installs the Python packages. Choose Python 3.12 under
+*Advanced settings* when deploying.
 
 Try the scorer from the command line:
 
@@ -414,7 +441,8 @@ Per-recording results (`results/detector_evaluation.json`):
 ## Repository layout
 
 ```
-├── README.md, CREDITS.md, requirements.txt, run_pipeline.sh, pytest.ini
+├── README.md, CREDITS.md, run_pipeline.sh, pytest.ini
+├── requirements.txt, requirements-dev.txt, packages.txt   # Python deps, dev deps, apt deps for deployment
 ├── app.py                         # Streamlit web app for both modules
 ├── data/
 │   ├── fetch_catalog.py           # downloads catalog + noise from ccMixter / Wikimedia Commons
@@ -425,6 +453,7 @@ Per-recording results (`results/detector_evaluation.json`):
 │   └── audio/
 │       ├── raw/                   # catalog MP3s (gitignored, downloaded)
 │       ├── noise/                 # noise clips (gitignored, downloaded)
+│       ├── previews/              # 30 s preview of each track for the web app (committed)
 │       └── simulated_events/      # 14 simulated recordings + ground_truth.json (committed)
 ├── db/
 │   ├── schema.sql
@@ -434,7 +463,7 @@ Per-recording results (`results/detector_evaluation.json`):
 │   ├── features.py, scorer.py     # Module A
 │   ├── fingerprint.py, simulate_event.py, detector.py, report.py   # Module B
 │   ├── evaluate.py                # threshold tuning, test metrics, SNR sweep, ablation
-│   ├── plots.py, readme_results.py
+│   ├── plots.py, readme_results.py, previews.py
 ├── notebooks/eda.ipynb            # feature distributions, tempo check, fingerprint sanity checks
 ├── results/                       # every number and figure, from run_pipeline.sh
 └── tests/                         # features, scorer, detector (incl. true negatives), report

@@ -10,6 +10,7 @@ $PY -m db.seed                            # schema + tracks + licenses
 $PY -m src.features                       # Module A: librosa features
 $PY -m src.scorer --examples              # Module A: results/scoring_examples.json
 $PY -m src.fingerprint                    # Module B: Chromaprint fingerprints
+$PY -m src.previews                       # 30 s preview clips for the web app
 $PY -m src.simulate_event                 # Module B: synthetic event recordings + ground truth
 $PY -m src.evaluate --tune                # pick threshold on the tune split
 $PY -m src.detector                       # detections for every recording -> DB

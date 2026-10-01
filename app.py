@@ -25,12 +25,27 @@ import streamlit as st
 from src.db import DB_PATH, ROOT, connect, resolve
 from src.detector import GROUND_TRUTH, HOP_SEC, MIN_WINDOWS, WINDOW_SEC, detect, load_threshold, score_windows
 from src.fingerprint import HASH_RATE_HZ, fingerprint_file, load_fingerprints
+from src.previews import preview_path
 from src.report import DISCLAIMER, license_status
 from src.scorer import LEVELS, Brief, load_catalog, score_catalog
 
 st.set_page_config(page_title="Music Licensing Analytics", page_icon="🎵", layout="wide")
 
 BLUE, ORANGE, GRAY = "#2a78d6", "#eb6834", "#8a8985"
+
+LIMITATIONS = """
+- **Small:** 47 catalog tracks and 14 test recordings.
+- **Simulated:** every venue recording was made by mixing catalog excerpts with real crowd and
+  talking noise, reverb, a phone-style filter and MP3 compression. None of them is a real phone
+  recording at a real venue.
+- **Tiny test set:** the held-out set has 6 track appearances and 2 no-music controls. The detector
+  got all of them right, which is a smoke test, not an accuracy estimate. On the tuning set it had
+  one miss and one false alarm.
+- **Noise sensitivity:** in the stress test it found all 6 test excerpts with crowd noise 5-10 dB
+  quieter than the music, half of them at equal loudness, and none once the noise was 10 dB louder.
+- **Tags are rule-based:** mood and instrumental tags come from rules applied to the uploaders' own
+  ccMixter tags, not from listening or a trained model.
+"""
 
 
 # ---------- cached data ----------
@@ -121,7 +136,11 @@ with tab_find:
                                 f"<span style='color:{GRAY}'>{r['why']}</span>", unsafe_allow_html=True)
                     c1.caption(f"License: {r['license_type']} · [source]({r['source_url']})")
                     c2.metric("Score", f"{r['score']:.1f}")
+                    # Full tracks exist only on a machine that ran the pipeline; the deployed
+                    # app plays the committed 30 s previews instead.
                     path = resolve(r["file_path"])
+                    if not path.exists():
+                        path = preview_path(r["track_id"])
                     if path.exists():
                         c2.audio(str(path))
 
@@ -147,6 +166,9 @@ with tab_check:
     st.caption(f"Sliding-window Chromaprint matching: {WINDOW_SEC:.0f} s windows every {HOP_SEC} s, "
                f"peak_z threshold {threshold} (tuned on the tune split), at least {MIN_WINDOWS} "
                "non-overlapping windows agreeing on alignment.")
+
+    with st.expander("Limitations: read before trusting a result"):
+        st.markdown(LIMITATIONS)
 
     events = simulated_events()
     source = st.radio("Recording", ["Simulated venue recording", "Upload my own"], horizontal=True)
@@ -289,6 +311,10 @@ against any real venue or business.
 
 **Catalog.** 47 tracks from ccMixter under CC BY 2.5/3.0 or CC0. Credits are in `CREDITS.md`. Mood and
 instrumental tags come from rules applied to the uploaders' own ccMixter tags, not from listening.
+
+**Limitations.**
+
+{LIMITATIONS}
 
 **How detection works.** Chromaprint turns audio into about 8 32-bit codes per second. The recording is
 cut into 10 s windows. Each window slides across every catalog track, and at each position the app
