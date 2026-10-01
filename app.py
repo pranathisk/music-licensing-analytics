@@ -137,7 +137,7 @@ with tab_find:
                 tooltip=["title", "artist", alt.Tooltip("tempo_bpm:Q", format=".0f"),
                          alt.Tooltip("energy_rms:Q", format=".3f"), "mood_tags"],
             ).properties(height=340)
-            st.altair_chart(chart, use_container_width=True)
+            st.altair_chart(chart, width="stretch")
 
 # ---------- Module B ----------
 
@@ -235,7 +235,7 @@ with tab_check:
                                  for s in truth["segments"] if s["in_catalog"]])
             if not segs.empty:
                 layers.insert(0, alt.Chart(segs).mark_rect(color=GRAY, opacity=0.18).encode(x="start:Q", x2="end:Q"))
-        st.altair_chart(alt.layer(*layers).properties(height=300), use_container_width=True)
+        st.altair_chart(alt.layer(*layers).properties(height=300), width="stretch")
         st.caption("Dashed line: detection threshold. Shaded: where a catalog track really plays (simulated "
                    "recordings only). Single windows of unrelated tracks can cross the line; a detection also "
                    "needs two non-overlapping windows that agree on alignment.")
@@ -261,20 +261,20 @@ with tab_report:
                  "Really played?": {True: "yes", False: "no (false positive)", None: "unknown"}[d["matches_ground_truth"]],
                  "Reason": d["reason"]}
                 for e in rep["events"] for d in e["detections"]]
-        st.dataframe(pd.DataFrame(rows), use_container_width=True, hide_index=True)
+        st.dataframe(pd.DataFrame(rows), width="stretch", hide_index=True)
         if "evaluation" in rep:
             st.subheader("How accurate is the detector?")
             ev = rep["evaluation"]
             mt = pd.DataFrame([{"Set": name, **{k: v for k, v in ev[key].items()}}
                                for name, key in (("test (held out)", "test_split"), ("tune", "tune_split"))])
-            st.dataframe(mt, use_container_width=True, hide_index=True)
+            st.dataframe(mt, width="stretch", hide_index=True)
             st.caption(ev["note"])
         if "snr_sweep" in rep:
             st.markdown("**Detection rate vs. background noise** (6 test excerpts per level)")
             sw = pd.DataFrame([{"SNR (dB)": int(k), "Detected": v["detected"], "Out of": v["of"],
                                 "False positives": v["false_positives"]}
                                for k, v in rep["snr_sweep"]["summary_by_snr_db"].items()])
-            st.dataframe(sw, use_container_width=True, hide_index=True)
+            st.dataframe(sw, width="stretch", hide_index=True)
 
 # ---------- About ----------
 
