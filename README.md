@@ -1,5 +1,7 @@
 # Music Licensing Analytics
 
+**Live demo: [music-licensing-analytics.streamlit.app](https://music-licensing-analytics.streamlit.app)**
+
 Two tools on one SQL database and one catalog of 47 Creative Commons tracks:
 
 - **Sync licensing scorer.** Describe the track you need (tempo, energy, mood, instrumental) and get
