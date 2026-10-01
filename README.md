@@ -94,7 +94,24 @@ a time:
 | README results and credits | `python -m src.readme_results` | this file's Results section, `CREDITS.md` |
 | Tests | `python -m pytest` | |
 
-Try the scorer yourself:
+**Web app.** `app.py` is a Streamlit front end for both modules:
+
+```bash
+.venv/bin/streamlit run app.py      # opens http://localhost:8501
+```
+
+- **Find a track:** set a brief (tempo, energy, brightness, mood tags, instrumental). The ranked
+  matches come with explanations, audio previews and a feature-space chart.
+- **Check a recording:** pick one of the simulated venue recordings or upload your own audio file,
+  choose a venue and date, and see which catalog tracks were detected, their match strength over time,
+  and whether each use is licensed.
+- **Flag report:** the committed `results/detection_report.json` plus the accuracy and noise-sweep
+  numbers.
+
+The app only reads the database and never writes detections, so `results/` stays the output of
+`run_pipeline.sh`.
+
+Try the scorer from the command line:
 
 ```bash
 .venv/bin/python -m src.scorer --tempo 90-120 --energy high --instrumental --tags upbeat,driving
@@ -392,13 +409,13 @@ Per-recording results (`results/detector_evaluation.json`):
 - **MP3 headers can lie.** One file's header claimed 227 s of audio, but it decodes to 165 s, so
   durations are measured by decoding.
 
-**Not built:** a Streamlit front end (TODO). Both modules work from the command line, and the flag
-report is JSON.
+
 
 ## Repository layout
 
 ```
 ├── README.md, CREDITS.md, requirements.txt, run_pipeline.sh, pytest.ini
+├── app.py                         # Streamlit web app for both modules
 ├── data/
 │   ├── fetch_catalog.py           # downloads catalog + noise from ccMixter / Wikimedia Commons
 │   ├── catalog_ids.txt            # the 47 ccMixter upload IDs
