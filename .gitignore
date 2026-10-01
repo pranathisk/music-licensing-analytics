@@ -1,0 +1,22 @@
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Audio: ~265 MB of catalog MP3s plus ~21 MB of noise clips. Rebuild with
+# `python data/fetch_catalog.py` (raw + noise) and `python -m src.simulate_event`.
+data/audio/raw/
+data/audio/noise/
+# (data/audio/simulated_events/ is committed: ~8.5 MB, so the test recordings can be played.)
+data/ccmixter_metadata.json
+
+# SQLite database is rebuilt by the pipeline
+db/*.db
+db/*.db-shm
+db/*.db-wal
+db/*.db-journal
+
+.DS_Store

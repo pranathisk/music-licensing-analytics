@@ -1,0 +1,336 @@
+{
+  "generated_by": "python -m src.evaluate --snr-sweep",
+  "threshold": 4.25,
+  "setup": "each test-split excerpt, 10 s noise lead-in/out, crowd+chatter noise, room reverb, 100-7000 Hz band-limit, 64k MP3",
+  "summary_by_snr_db": {
+    "10": {
+      "detected": 6,
+      "of": 6,
+      "false_positives": 0
+    },
+    "5": {
+      "detected": 6,
+      "of": 6,
+      "false_positives": 0
+    },
+    "0": {
+      "detected": 3,
+      "of": 6,
+      "false_positives": 0
+    },
+    "-5": {
+      "detected": 2,
+      "of": 6,
+      "false_positives": 0
+    },
+    "-10": {
+      "detected": 0,
+      "of": 6,
+      "false_positives": 1
+    }
+  },
+  "runs": [
+    {
+      "track_id": "ccm_30513",
+      "excerpt_sec": 60.0,
+      "snr_db": 10,
+      "detected": true,
+      "match_confidence": 0.7735,
+      "peak_z": 5.102,
+      "offset_error_sec": 0.038,
+      "false_positives": []
+    },
+    {
+      "track_id": "ccm_30513",
+      "excerpt_sec": 60.0,
+      "snr_db": 5,
+      "detected": true,
+      "match_confidence": 0.7299,
+      "peak_z": 5.029,
+      "offset_error_sec": 0.038,
+      "false_positives": []
+    },
+    {
+      "track_id": "ccm_30513",
+      "excerpt_sec": 60.0,
+      "snr_db": 0,
+      "detected": true,
+      "match_confidence": 0.6667,
+      "peak_z": 4.586,
+      "offset_error_sec": 0.038,
+      "false_positives": []
+    },
+    {
+      "track_id": "ccm_30513",
+      "excerpt_sec": 60.0,
+      "snr_db": -5,
+      "detected": false,
+      "match_confidence": null,
+      "peak_z": null,
+      "offset_error_sec": null,
+      "false_positives": []
+    },
+    {
+      "track_id": "ccm_30513",
+      "excerpt_sec": 60.0,
+      "snr_db": -10,
+      "detected": false,
+      "match_confidence": null,
+      "peak_z": null,
+      "offset_error_sec": null,
+      "false_positives": []
+    },
+    {
+      "track_id": "ccm_33345",
+      "excerpt_sec": 50.0,
+      "snr_db": 10,
+      "detected": true,
+      "match_confidence": 0.8665,
+      "peak_z": 7.243,
+      "offset_error_sec": -0.067,
+      "false_positives": []
+    },
+    {
+      "track_id": "ccm_33345",
+      "excerpt_sec": 50.0,
+      "snr_db": 5,
+      "detected": true,
+      "match_confidence": 0.8268,
+      "peak_z": 7.007,
+      "offset_error_sec": 39.552,
+      "false_positives": []
+    },
+    {
+      "track_id": "ccm_33345",
+      "excerpt_sec": 50.0,
+      "snr_db": 0,
+      "detected": false,
+      "match_confidence": null,
+      "peak_z": null,
+      "offset_error_sec": null,
+      "false_positives": []
+    },
+    {
+      "track_id": "ccm_33345",
+      "excerpt_sec": 50.0,
+      "snr_db": -5,
+      "detected": true,
+      "match_confidence": 0.689,
+      "peak_z": 5.089,
+      "offset_error_sec": -39.562,
+      "false_positives": []
+    },
+    {
+      "track_id": "ccm_33345",
+      "excerpt_sec": 50.0,
+      "snr_db": -10,
+      "detected": false,
+      "match_confidence": null,
+      "peak_z": null,
+      "offset_error_sec": null,
+      "false_positives": [
+        "ccm_64427"
+      ]
+    },
+    {
+      "track_id": "ccm_43098",
+      "excerpt_sec": 50.0,
+      "snr_db": 10,
+      "detected": true,
+      "match_confidence": 0.8098,
+      "peak_z": 9.999,
+      "offset_error_sec": 0.019,
+      "false_positives": []
+    },
+    {
+      "track_id": "ccm_43098",
+      "excerpt_sec": 50.0,
+      "snr_db": 5,
+      "detected": true,
+      "match_confidence": 0.7365,
+      "peak_z": 7.118,
+      "offset_error_sec": 0.019,
+      "false_positives": []
+    },
+    {
+      "track_id": "ccm_43098",
+      "excerpt_sec": 50.0,
+      "snr_db": 0,
+      "detected": false,
+      "match_confidence": null,
+      "peak_z": null,
+      "offset_error_sec": null,
+      "false_positives": []
+    },
+    {
+      "track_id": "ccm_43098",
+      "excerpt_sec": 50.0,
+      "snr_db": -5,
+      "detected": false,
+      "match_confidence": null,
+      "peak_z": null,
+      "offset_error_sec": null,
+      "false_positives": []
+    },
+    {
+      "track_id": "ccm_43098",
+      "excerpt_sec": 50.0,
+      "snr_db": -10,
+      "detected": false,
+      "match_confidence": null,
+      "peak_z": null,
+      "offset_error_sec": null,
+      "false_positives": []
+    },
+    {
+      "track_id": "ccm_2905",
+      "excerpt_sec": 60.0,
+      "snr_db": 10,
+      "detected": true,
+      "match_confidence": 0.8823,
+      "peak_z": 10.77,
+      "offset_error_sec": 0.029,
+      "false_positives": []
+    },
+    {
+      "track_id": "ccm_2905",
+      "excerpt_sec": 60.0,
+      "snr_db": 5,
+      "detected": true,
+      "match_confidence": 0.87,
+      "peak_z": 9.932,
+      "offset_error_sec": 0.029,
+      "false_positives": []
+    },
+    {
+      "track_id": "ccm_2905",
+      "excerpt_sec": 60.0,
+      "snr_db": 0,
+      "detected": true,
+      "match_confidence": 0.8125,
+      "peak_z": 8.749,
+      "offset_error_sec": 0.029,
+      "false_positives": []
+    },
+    {
+      "track_id": "ccm_2905",
+      "excerpt_sec": 60.0,
+      "snr_db": -5,
+      "detected": true,
+      "match_confidence": 0.7095,
+      "peak_z": 7.21,
+      "offset_error_sec": 0.029,
+      "false_positives": []
+    },
+    {
+      "track_id": "ccm_2905",
+      "excerpt_sec": 60.0,
+      "snr_db": -10,
+      "detected": false,
+      "match_confidence": null,
+      "peak_z": null,
+      "offset_error_sec": null,
+      "false_positives": []
+    },
+    {
+      "track_id": "ccm_31670",
+      "excerpt_sec": 45.0,
+      "snr_db": 10,
+      "detected": true,
+      "match_confidence": 0.7018,
+      "peak_z": 6.904,
+      "offset_error_sec": -0.019,
+      "false_positives": []
+    },
+    {
+      "track_id": "ccm_31670",
+      "excerpt_sec": 45.0,
+      "snr_db": 5,
+      "detected": true,
+      "match_confidence": 0.6794,
+      "peak_z": 6.372,
+      "offset_error_sec": -0.019,
+      "false_positives": []
+    },
+    {
+      "track_id": "ccm_31670",
+      "excerpt_sec": 45.0,
+      "snr_db": 0,
+      "detected": true,
+      "match_confidence": 0.6096,
+      "peak_z": 4.98,
+      "offset_error_sec": -0.019,
+      "false_positives": []
+    },
+    {
+      "track_id": "ccm_31670",
+      "excerpt_sec": 45.0,
+      "snr_db": -5,
+      "detected": false,
+      "match_confidence": null,
+      "peak_z": null,
+      "offset_error_sec": null,
+      "false_positives": []
+    },
+    {
+      "track_id": "ccm_31670",
+      "excerpt_sec": 45.0,
+      "snr_db": -10,
+      "detected": false,
+      "match_confidence": null,
+      "peak_z": null,
+      "offset_error_sec": null,
+      "false_positives": []
+    },
+    {
+      "track_id": "ccm_54335",
+      "excerpt_sec": 20.0,
+      "snr_db": 10,
+      "detected": true,
+      "match_confidence": 0.826,
+      "peak_z": 9.251,
+      "offset_error_sec": -0.038,
+      "false_positives": []
+    },
+    {
+      "track_id": "ccm_54335",
+      "excerpt_sec": 20.0,
+      "snr_db": 5,
+      "detected": true,
+      "match_confidence": 0.8144,
+      "peak_z": 8.45,
+      "offset_error_sec": -0.038,
+      "false_positives": []
+    },
+    {
+      "track_id": "ccm_54335",
+      "excerpt_sec": 20.0,
+      "snr_db": 0,
+      "detected": false,
+      "match_confidence": null,
+      "peak_z": null,
+      "offset_error_sec": null,
+      "false_positives": []
+    },
+    {
+      "track_id": "ccm_54335",
+      "excerpt_sec": 20.0,
+      "snr_db": -5,
+      "detected": false,
+      "match_confidence": null,
+      "peak_z": null,
+      "offset_error_sec": null,
+      "false_positives": []
+    },
+    {
+      "track_id": "ccm_54335",
+      "excerpt_sec": 20.0,
+      "snr_db": -10,
+      "detected": false,
+      "match_confidence": null,
+      "peak_z": null,
+      "offset_error_sec": null,
+      "false_positives": []
+    }
+  ]
+}

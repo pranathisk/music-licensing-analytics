@@ -1,0 +1,360 @@
+{
+  "generated_by": "python -m src.simulate_event",
+  "sample_rate": 22050,
+  "events": [
+    {
+      "key": "test_01",
+      "event_name": "Simulated Venue Recording 1",
+      "venue": "Venue A (fictional)",
+      "recorded_at": "2026-03-14 21:30:00",
+      "split": "test",
+      "recording_path": "data/audio/simulated_events/test_01.mp3",
+      "duration_sec": 85.0,
+      "snr_db": 10,
+      "noise": [
+        "crowd"
+      ],
+      "mp3_bitrate": "64k",
+      "kind": "positive",
+      "segments": [
+        {
+          "track_id": "ccm_30513",
+          "in_catalog": true,
+          "ref_start_sec": 45,
+          "recording_start_sec": 15.0,
+          "recording_end_sec": 75.0
+        }
+      ],
+      "notes": "single techno track, moderate crowd noise"
+    },
+    {
+      "key": "test_02",
+      "event_name": "Simulated Venue Recording 2 (DJ set)",
+      "venue": "Venue A (fictional)",
+      "recorded_at": "2026-03-21 23:00:00",
+      "split": "test",
+      "recording_path": "data/audio/simulated_events/test_02.mp3",
+      "duration_sec": 115.0,
+      "snr_db": 5,
+      "noise": [
+        "crowd",
+        "chatter"
+      ],
+      "mp3_bitrate": "64k",
+      "kind": "positive",
+      "segments": [
+        {
+          "track_id": "ccm_33345",
+          "in_catalog": true,
+          "ref_start_sec": 30,
+          "recording_start_sec": 8.0,
+          "recording_end_sec": 58.0
+        },
+        {
+          "track_id": "ccm_43098",
+          "in_catalog": true,
+          "ref_start_sec": 60,
+          "recording_start_sec": 55.0,
+          "recording_end_sec": 105.0
+        }
+      ],
+      "notes": "two tracks back to back with a 3 s crossfade"
+    },
+    {
+      "key": "test_03",
+      "event_name": "Simulated Venue Recording 3 (quiet piano under talking)",
+      "venue": "Venue B (fictional)",
+      "recorded_at": "2026-04-02 19:15:00",
+      "split": "test",
+      "recording_path": "data/audio/simulated_events/test_03.mp3",
+      "duration_sec": 90.0,
+      "snr_db": 0,
+      "noise": [
+        "chatter"
+      ],
+      "mp3_bitrate": "64k",
+      "kind": "positive",
+      "segments": [
+        {
+          "track_id": "ccm_2905",
+          "in_catalog": true,
+          "ref_start_sec": 20,
+          "recording_start_sec": 20.0,
+          "recording_end_sec": 80.0
+        }
+      ],
+      "notes": "quiet ambient piano at 0 dB SNR against conversation"
+    },
+    {
+      "key": "test_04",
+      "event_name": "Simulated Venue Recording 4",
+      "venue": "Venue B (fictional)",
+      "recorded_at": "2026-04-10 20:45:00",
+      "split": "test",
+      "recording_path": "data/audio/simulated_events/test_04.mp3",
+      "duration_sec": 67.0,
+      "snr_db": 5,
+      "noise": [
+        "crowd",
+        "chatter"
+      ],
+      "mp3_bitrate": "64k",
+      "kind": "positive",
+      "segments": [
+        {
+          "track_id": "ccm_31670",
+          "in_catalog": true,
+          "ref_start_sec": 90,
+          "recording_start_sec": 12.0,
+          "recording_end_sec": 57.0
+        }
+      ],
+      "notes": "downtempo track with vocals"
+    },
+    {
+      "key": "test_05",
+      "event_name": "Simulated Venue Recording 5 (short excerpt)",
+      "venue": "Venue C (fictional)",
+      "recorded_at": "2026-05-01 22:10:00",
+      "split": "test",
+      "recording_path": "data/audio/simulated_events/test_05.mp3",
+      "duration_sec": 55.0,
+      "snr_db": 5,
+      "noise": [
+        "crowd"
+      ],
+      "mp3_bitrate": "64k",
+      "kind": "positive",
+      "segments": [
+        {
+          "track_id": "ccm_54335",
+          "in_catalog": true,
+          "ref_start_sec": 40,
+          "recording_start_sec": 25.0,
+          "recording_end_sec": 45.0
+        }
+      ],
+      "notes": "only 20 s of the track is audible"
+    },
+    {
+      "key": "test_neg_01",
+      "event_name": "Negative control: crowd and talking only",
+      "venue": "Venue A (fictional)",
+      "recorded_at": "2026-03-28 22:00:00",
+      "split": "test",
+      "recording_path": "data/audio/simulated_events/test_neg_01.mp3",
+      "duration_sec": 90.0,
+      "snr_db": null,
+      "noise": [
+        "crowd",
+        "chatter"
+      ],
+      "mp3_bitrate": "64k",
+      "kind": "negative_control",
+      "segments": [],
+      "notes": "no music at all"
+    },
+    {
+      "key": "test_neg_02",
+      "event_name": "Negative control: non-catalog CC track",
+      "venue": "Venue C (fictional)",
+      "recorded_at": "2026-05-08 21:00:00",
+      "split": "test",
+      "recording_path": "data/audio/simulated_events/test_neg_02.mp3",
+      "duration_sec": 80.0,
+      "snr_db": 5,
+      "noise": [
+        "crowd"
+      ],
+      "mp3_bitrate": "64k",
+      "kind": "negative_control",
+      "segments": [
+        {
+          "track_id": "noncatalog",
+          "in_catalog": false,
+          "ref_start_sec": 30,
+          "recording_start_sec": 10.0,
+          "recording_end_sec": 70.0
+        }
+      ],
+      "notes": "music that is NOT in the catalog (Alex Beroza - Emerge In Love, CC BY 3.0), same artist as three catalog tracks"
+    },
+    {
+      "key": "tune_01",
+      "event_name": "Tuning Recording 1",
+      "venue": "Venue A (fictional)",
+      "recorded_at": "2026-02-07 21:00:00",
+      "split": "tune",
+      "recording_path": "data/audio/simulated_events/tune_01.mp3",
+      "duration_sec": 70.0,
+      "snr_db": 10,
+      "noise": [
+        "crowd"
+      ],
+      "mp3_bitrate": "64k",
+      "kind": "positive",
+      "segments": [
+        {
+          "track_id": "ccm_29630",
+          "in_catalog": true,
+          "ref_start_sec": 30,
+          "recording_start_sec": 10.0,
+          "recording_end_sec": 60.0
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "key": "tune_02",
+      "event_name": "Tuning Recording 2",
+      "venue": "Venue B (fictional)",
+      "recorded_at": "2026-02-08 21:00:00",
+      "split": "tune",
+      "recording_path": "data/audio/simulated_events/tune_02.mp3",
+      "duration_sec": 70.0,
+      "snr_db": 5,
+      "noise": [
+        "chatter"
+      ],
+      "mp3_bitrate": "64k",
+      "kind": "positive",
+      "segments": [
+        {
+          "track_id": "ccm_17432",
+          "in_catalog": true,
+          "ref_start_sec": 50,
+          "recording_start_sec": 10.0,
+          "recording_end_sec": 60.0
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "key": "tune_03",
+      "event_name": "Tuning Recording 3",
+      "venue": "Venue C (fictional)",
+      "recorded_at": "2026-02-09 21:00:00",
+      "split": "tune",
+      "recording_path": "data/audio/simulated_events/tune_03.mp3",
+      "duration_sec": 97.0,
+      "snr_db": 0,
+      "noise": [
+        "crowd",
+        "chatter"
+      ],
+      "mp3_bitrate": "64k",
+      "kind": "positive",
+      "segments": [
+        {
+          "track_id": "ccm_64427",
+          "in_catalog": true,
+          "ref_start_sec": 20,
+          "recording_start_sec": 10.0,
+          "recording_end_sec": 50.0
+        },
+        {
+          "track_id": "ccm_26157",
+          "in_catalog": true,
+          "ref_start_sec": 60,
+          "recording_start_sec": 47.0,
+          "recording_end_sec": 87.0
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "key": "tune_04",
+      "event_name": "Tuning Recording 4 (stress: -5 dB SNR)",
+      "venue": "Venue B (fictional)",
+      "recorded_at": "2026-02-10 21:00:00",
+      "split": "tune",
+      "recording_path": "data/audio/simulated_events/tune_04.mp3",
+      "duration_sec": 70.0,
+      "snr_db": -5,
+      "noise": [
+        "crowd",
+        "chatter"
+      ],
+      "mp3_bitrate": "64k",
+      "kind": "positive",
+      "segments": [
+        {
+          "track_id": "ccm_58268",
+          "in_catalog": true,
+          "ref_start_sec": 30,
+          "recording_start_sec": 10.0,
+          "recording_end_sec": 60.0
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "key": "tune_05",
+      "event_name": "Tuning Recording 5",
+      "venue": "Venue C (fictional)",
+      "recorded_at": "2026-02-11 21:00:00",
+      "split": "tune",
+      "recording_path": "data/audio/simulated_events/tune_05.mp3",
+      "duration_sec": 65.0,
+      "snr_db": 5,
+      "noise": [
+        "crowd"
+      ],
+      "mp3_bitrate": "64k",
+      "kind": "positive",
+      "segments": [
+        {
+          "track_id": "ccm_4209",
+          "in_catalog": true,
+          "ref_start_sec": 100,
+          "recording_start_sec": 10.0,
+          "recording_end_sec": 55.0
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "key": "tune_neg_01",
+      "event_name": "Tuning negative: crowd and talking only",
+      "venue": "Venue A (fictional)",
+      "recorded_at": "2026-02-12 21:00:00",
+      "split": "tune",
+      "recording_path": "data/audio/simulated_events/tune_neg_01.mp3",
+      "duration_sec": 90.0,
+      "snr_db": null,
+      "noise": [
+        "crowd",
+        "chatter"
+      ],
+      "mp3_bitrate": "64k",
+      "kind": "negative_control",
+      "segments": [],
+      "notes": ""
+    },
+    {
+      "key": "tune_neg_02",
+      "event_name": "Tuning negative: non-catalog CC track",
+      "venue": "Venue B (fictional)",
+      "recorded_at": "2026-02-13 21:00:00",
+      "split": "tune",
+      "recording_path": "data/audio/simulated_events/tune_neg_02.mp3",
+      "duration_sec": 70.0,
+      "snr_db": 5,
+      "noise": [
+        "chatter"
+      ],
+      "mp3_bitrate": "64k",
+      "kind": "negative_control",
+      "segments": [
+        {
+          "track_id": "noncatalog",
+          "in_catalog": false,
+          "ref_start_sec": 140,
+          "recording_start_sec": 10.0,
+          "recording_end_sec": 60.0
+        }
+      ],
+      "notes": ""
+    }
+  ]
+}

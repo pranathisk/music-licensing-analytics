@@ -1,0 +1,360 @@
+{
+  "generated_by": "python -m src.evaluate --test",
+  "threshold": 4.25,
+  "offset_tolerance_sec": 1.0,
+  "splits": {
+    "tune": {
+      "metrics": {
+        "true_positives": 5,
+        "false_positives": 1,
+        "false_negatives": 1,
+        "precision": 0.8333,
+        "recall": 0.8333,
+        "f1": 0.8333,
+        "offset_correct": 5,
+        "negative_controls_clean": 1,
+        "negative_controls_total": 2
+      },
+      "events": [
+        {
+          "key": "tune_01",
+          "kind": "positive",
+          "snr_db": 10,
+          "expected_tracks": [
+            "ccm_29630"
+          ],
+          "detections": [
+            {
+              "track_id": "ccm_29630",
+              "correct_track": true,
+              "offset_error_sec": -0.067,
+              "match_confidence": 0.7758,
+              "peak_z": 6.928,
+              "matched_windows": 4,
+              "recording_start_sec": 7.43,
+              "matched_offset_sec": 27.36
+            }
+          ],
+          "missed_tracks": [],
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "offset_correct": 1
+        },
+        {
+          "key": "tune_02",
+          "kind": "positive",
+          "snr_db": 5,
+          "expected_tracks": [
+            "ccm_17432"
+          ],
+          "detections": [
+            {
+              "track_id": "ccm_17432",
+              "correct_track": true,
+              "offset_error_sec": -0.01,
+              "match_confidence": 0.782,
+              "peak_z": 7.405,
+              "matched_windows": 4,
+              "recording_start_sec": 9.9,
+              "matched_offset_sec": 49.9
+            }
+          ],
+          "missed_tracks": [],
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "offset_correct": 1
+        },
+        {
+          "key": "tune_03",
+          "kind": "positive",
+          "snr_db": 0,
+          "expected_tracks": [
+            "ccm_26157",
+            "ccm_64427"
+          ],
+          "detections": [
+            {
+              "track_id": "ccm_64427",
+              "correct_track": true,
+              "offset_error_sec": 0.029,
+              "match_confidence": 0.6779,
+              "peak_z": 6.554,
+              "matched_windows": 3,
+              "recording_start_sec": 4.95,
+              "matched_offset_sec": 14.98
+            },
+            {
+              "track_id": "ccm_26157",
+              "correct_track": true,
+              "offset_error_sec": 0.124,
+              "match_confidence": 0.7137,
+              "peak_z": 7.579,
+              "matched_windows": 4,
+              "recording_start_sec": 42.1,
+              "matched_offset_sec": 55.22
+            }
+          ],
+          "missed_tracks": [],
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "offset_correct": 2
+        },
+        {
+          "key": "tune_04",
+          "kind": "positive",
+          "snr_db": -5,
+          "expected_tracks": [
+            "ccm_58268"
+          ],
+          "detections": [],
+          "missed_tracks": [
+            "ccm_58268"
+          ],
+          "tp": 0,
+          "fp": 0,
+          "fn": 1,
+          "offset_correct": 0
+        },
+        {
+          "key": "tune_05",
+          "kind": "positive",
+          "snr_db": 5,
+          "expected_tracks": [
+            "ccm_4209"
+          ],
+          "detections": [
+            {
+              "track_id": "ccm_4209",
+              "correct_track": true,
+              "offset_error_sec": 0.01,
+              "match_confidence": 0.8299,
+              "peak_z": 5.076,
+              "matched_windows": 2,
+              "recording_start_sec": 22.29,
+              "matched_offset_sec": 112.3
+            }
+          ],
+          "missed_tracks": [],
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "offset_correct": 1
+        },
+        {
+          "key": "tune_neg_01",
+          "kind": "negative_control",
+          "snr_db": null,
+          "expected_tracks": [],
+          "detections": [
+            {
+              "track_id": "ccm_64427",
+              "correct_track": false,
+              "offset_error_sec": null,
+              "match_confidence": 0.5772,
+              "peak_z": 4.827,
+              "matched_windows": 2,
+              "recording_start_sec": 37.14,
+              "matched_offset_sec": 192.03
+            }
+          ],
+          "missed_tracks": [],
+          "tp": 0,
+          "fp": 1,
+          "fn": 0,
+          "offset_correct": 0
+        },
+        {
+          "key": "tune_neg_02",
+          "kind": "negative_control",
+          "snr_db": 5,
+          "expected_tracks": [],
+          "detections": [],
+          "missed_tracks": [],
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "offset_correct": 0
+        }
+      ]
+    },
+    "test": {
+      "metrics": {
+        "true_positives": 6,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "offset_correct": 6,
+        "negative_controls_clean": 2,
+        "negative_controls_total": 2
+      },
+      "events": [
+        {
+          "key": "test_01",
+          "kind": "positive",
+          "snr_db": 10,
+          "expected_tracks": [
+            "ccm_30513"
+          ],
+          "detections": [
+            {
+              "track_id": "ccm_30513",
+              "correct_track": true,
+              "offset_error_sec": -0.038,
+              "match_confidence": 0.7701,
+              "peak_z": 5.076,
+              "matched_windows": 5,
+              "recording_start_sec": 12.38,
+              "matched_offset_sec": 42.34
+            }
+          ],
+          "missed_tracks": [],
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "offset_correct": 1
+        },
+        {
+          "key": "test_02",
+          "kind": "positive",
+          "snr_db": 5,
+          "expected_tracks": [
+            "ccm_33345",
+            "ccm_43098"
+          ],
+          "detections": [
+            {
+              "track_id": "ccm_33345",
+              "correct_track": true,
+              "offset_error_sec": 0.038,
+              "match_confidence": 0.8642,
+              "peak_z": 7.26,
+              "matched_windows": 2,
+              "recording_start_sec": 7.43,
+              "matched_offset_sec": 29.47
+            },
+            {
+              "track_id": "ccm_43098",
+              "correct_track": true,
+              "offset_error_sec": -0.048,
+              "match_confidence": 0.75,
+              "peak_z": 8.265,
+              "matched_windows": 3,
+              "recording_start_sec": 69.33,
+              "matched_offset_sec": 74.29
+            }
+          ],
+          "missed_tracks": [],
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "offset_correct": 2
+        },
+        {
+          "key": "test_03",
+          "kind": "positive",
+          "snr_db": 0,
+          "expected_tracks": [
+            "ccm_2905"
+          ],
+          "detections": [
+            {
+              "track_id": "ccm_2905",
+              "correct_track": true,
+              "offset_error_sec": 0.0,
+              "match_confidence": 0.8017,
+              "peak_z": 8.762,
+              "matched_windows": 5,
+              "recording_start_sec": 14.86,
+              "matched_offset_sec": 14.86
+            }
+          ],
+          "missed_tracks": [],
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "offset_correct": 1
+        },
+        {
+          "key": "test_04",
+          "kind": "positive",
+          "snr_db": 5,
+          "expected_tracks": [
+            "ccm_31670"
+          ],
+          "detections": [
+            {
+              "track_id": "ccm_31670",
+              "correct_track": true,
+              "offset_error_sec": 0.0,
+              "match_confidence": 0.6921,
+              "peak_z": 6.946,
+              "matched_windows": 3,
+              "recording_start_sec": 7.43,
+              "matched_offset_sec": 85.43
+            }
+          ],
+          "missed_tracks": [],
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "offset_correct": 1
+        },
+        {
+          "key": "test_05",
+          "kind": "positive",
+          "snr_db": 5,
+          "expected_tracks": [
+            "ccm_54335"
+          ],
+          "detections": [
+            {
+              "track_id": "ccm_54335",
+              "correct_track": true,
+              "offset_error_sec": -0.019,
+              "match_confidence": 0.8063,
+              "peak_z": 8.635,
+              "matched_windows": 2,
+              "recording_start_sec": 22.29,
+              "matched_offset_sec": 37.27
+            }
+          ],
+          "missed_tracks": [],
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "offset_correct": 1
+        },
+        {
+          "key": "test_neg_01",
+          "kind": "negative_control",
+          "snr_db": null,
+          "expected_tracks": [],
+          "detections": [],
+          "missed_tracks": [],
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "offset_correct": 0
+        },
+        {
+          "key": "test_neg_02",
+          "kind": "negative_control",
+          "snr_db": 5,
+          "expected_tracks": [],
+          "detections": [],
+          "missed_tracks": [],
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "offset_correct": 0
+        }
+      ]
+    }
+  },
+  "note": "Threshold was chosen on the tune split, so tune metrics are optimistic; the test split is the held-out number. Both are tiny synthetic sets."
+}

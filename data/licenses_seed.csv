@@ -1,0 +1,10 @@
+license_id,track_id,licensee,scope,start_date,end_date,status
+1,ccm_30513,Venue A (fictional),background music - public performance,2026-01-01,2026-12-31,active
+2,ccm_33345,Venue A (fictional),background music - public performance,2025-01-01,2025-12-31,expired
+3,ccm_43098,Venue A (fictional),background music - public performance,,,none
+4,ccm_2905,Venue B (fictional),background music - public performance,2026-01-01,2026-06-30,active
+5,ccm_31670,Venue B (fictional),background music - public performance,2026-05-01,2027-04-30,active
+6,ccm_54335,Venue C (fictional),live event - public performance,2026-01-01,2026-12-31,active
+7,ccm_29630,Venue A (fictional),background music - public performance,2026-01-01,2026-12-31,active
+8,ccm_64427,Studio X (fictional),sync - online video ad,2026-02-01,2026-08-01,active
+9,ccm_21067,Studio X (fictional),sync - documentary score,2025-06-01,2026-06-01,active

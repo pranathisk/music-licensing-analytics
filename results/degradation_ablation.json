@@ -1,0 +1,60 @@
+{
+  "generated_by": "python -m src.evaluate --ablation",
+  "setup": "test-split excerpts, non-overlapping 10 s windows, one degradation at a time",
+  "conditions": {
+    "clean (lossless)": {
+      "windows": 23,
+      "mean_best_bit_agreement": 0.9491,
+      "mean_peak_z": 7.592,
+      "best_offset_is_true_offset": 0.913
+    },
+    "64k MP3 only": {
+      "windows": 23,
+      "mean_best_bit_agreement": 0.9477,
+      "mean_peak_z": 7.565,
+      "best_offset_is_true_offset": 0.913
+    },
+    "room reverb only": {
+      "windows": 23,
+      "mean_best_bit_agreement": 0.8641,
+      "mean_peak_z": 6.759,
+      "best_offset_is_true_offset": 0.913
+    },
+    "phone band-limit 100-7000 Hz, order 2 (used)": {
+      "windows": 23,
+      "mean_best_bit_agreement": 0.8367,
+      "mean_peak_z": 6.964,
+      "best_offset_is_true_offset": 0.913
+    },
+    "steeper band-limit 150-7000 Hz, order 4 (first draft, rejected)": {
+      "windows": 23,
+      "mean_best_bit_agreement": 0.7449,
+      "mean_peak_z": 6.059,
+      "best_offset_is_true_offset": 0.8261
+    },
+    "crowd+chatter noise at 10 dB SNR": {
+      "windows": 23,
+      "mean_best_bit_agreement": 0.9207,
+      "mean_peak_z": 7.091,
+      "best_offset_is_true_offset": 0.7826
+    },
+    "crowd+chatter noise at 5 dB SNR": {
+      "windows": 23,
+      "mean_best_bit_agreement": 0.8715,
+      "mean_peak_z": 6.46,
+      "best_offset_is_true_offset": 0.7826
+    },
+    "crowd+chatter noise at 0 dB SNR": {
+      "windows": 23,
+      "mean_best_bit_agreement": 0.7764,
+      "mean_peak_z": 5.436,
+      "best_offset_is_true_offset": 0.7826
+    },
+    "crowd+chatter noise at -5 dB SNR": {
+      "windows": 23,
+      "mean_best_bit_agreement": 0.6556,
+      "mean_peak_z": 4.081,
+      "best_offset_is_true_offset": 0.4348
+    }
+  }
+}
