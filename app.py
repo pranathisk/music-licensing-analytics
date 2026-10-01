@@ -6,7 +6,6 @@ Tabs:
   Find a track       Module A: brief -> ranked catalog, with audio previews
   Check a recording  Module B: pick a simulated recording or upload your own -> detections + license check
   Flag report        the committed results/detection_report.json and evaluation numbers
-  About              what this is and isn't
 
 The app only reads the database; it never writes detections, so results/ stays the
 single source of truth produced by run_pipeline.sh.
@@ -94,7 +93,7 @@ st.title("Music Licensing Analytics")
 st.caption("Sync-licensing scorer and unlicensed-use detector over a 47-track Creative Commons catalog. "
            "Portfolio demo: fictional venues and licenses, simulated recordings.")
 
-tab_find, tab_check, tab_report, tab_about = st.tabs(["Find a track", "Check a recording", "Flag report", "About"])
+tab_find, tab_check, tab_report = st.tabs(["Find a track", "Check a recording", "Flag report"])
 
 # ---------- Module A ----------
 
@@ -297,28 +296,3 @@ with tab_report:
                                 "False positives": v["false_positives"]}
                                for k, v in rep["snr_sweep"]["summary_by_snr_db"].items()])
             st.dataframe(sw, width="stretch", hide_index=True)
-
-# ---------- About ----------
-
-with tab_about:
-    st.markdown(f"""
-**What this is.** A portfolio project showing both sides of music licensing on one catalog and one
-database: helping someone find a track to license (sync scoring), and spotting tracks that were played
-without a license (audio fingerprinting).
-
-**What it isn't.** {DISCLAIMER} This tool cannot be used to bring or support an infringement claim
-against any real venue or business.
-
-**Catalog.** 47 tracks from ccMixter under CC BY 2.5/3.0 or CC0. Credits are in `CREDITS.md`. Mood and
-instrumental tags come from rules applied to the uploaders' own ccMixter tags, not from listening.
-
-**Limitations.**
-
-{LIMITATIONS}
-
-**How detection works.** Chromaprint turns audio into about 8 32-bit codes per second. The recording is
-cut into 10 s windows. Each window slides across every catalog track, and at each position the app
-counts how many bits agree. The best position's score is compared with that track's other positions
-(peak_z), and a track is reported only when separate windows agree on the same alignment. See the
-README for details and the full results.
-""")
