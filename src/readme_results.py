@@ -1,9 +1,10 @@
-"""Regenerate the README's results section from the files in results/.
+"""Regenerate the results sections of README.md and docs/RESULTS.md from results/.
 
     python -m src.readme_results
 
-Rewrites everything between the RESULTS:START and RESULTS:END markers in README.md,
-so every number in that section is copied from a results file, never typed by hand.
+Rewrites everything between the RESULTS:START and RESULTS:END markers: a short summary in
+README.md and the full tables in docs/RESULTS.md. Every number is copied from a results
+file, never typed by hand. Also writes CREDITS.md.
 """
 from __future__ import annotations
 
@@ -12,6 +13,7 @@ import json
 from src.db import ROOT
 
 README = ROOT / "README.md"
+RESULTS_DOC = ROOT / "docs" / "RESULTS.md"
 CREDITS = ROOT / "CREDITS.md"
 START, END = "<!-- RESULTS:START -->", "<!-- RESULTS:END -->"
 
@@ -129,17 +131,46 @@ def write_credits() -> None:
     CREDITS.write_text("\n".join(lines) + "\n")
 
 
-def main() -> None:
-    write_credits()
-    text = README.read_text()
+def summary_section() -> list[str]:
+    """The short version for the README front page."""
+    ev = load("detector_evaluation.json")
+    sweep = load("snr_sweep.json")
+    ex = load("scoring_examples.json")["examples"][0]
+    out = ["**Detector, simulated recordings** (threshold chosen on the tune set only):", "",
+           "| Set | Tracks found | Missed | False alarms | No-music controls clean |", "|---|---|---|---|---|"]
+    for split, label in (("test", "Test (held out)"), ("tune", "Tune")):
+        m = ev["splits"][split]["metrics"]
+        out.append(f"| {label} | {m['true_positives']}/{m['true_positives'] + m['false_negatives']} | "
+                   f"{m['false_negatives']} | {m['false_positives']} | "
+                   f"{m['negative_controls_clean']}/{m['negative_controls_total']} |")
+    out += ["", "**Noise stress test**: the same test excerpts re-mixed at each noise level "
+            "(SNR = how much louder the music is than the crowd):", "",
+            "| SNR (dB) | " + " | ".join(sweep["summary_by_snr_db"]) + " |",
+            "|---|" + "---|" * len(sweep["summary_by_snr_db"]),
+            "| Detected | " + " | ".join(f"{v['detected']}/{v['of']}" for v in sweep["summary_by_snr_db"].values()) + " |",
+            "| False alarms | " + " | ".join(str(v["false_positives"]) for v in sweep["summary_by_snr_db"].values()) + " |",
+            "", f"**Scorer, example brief**: {ex['description'].split(' (')[0].lower()}:", ""]
+    for i, r in enumerate(ex["top"][:3], 1):
+        out.append(f"{i}. **{r['title']}** ({r['score']:.1f}): {r['why']}")
+    out += ["", "Full tables (per-recording results, threshold sweep, degradation ablation, flag report): "
+            "[docs/RESULTS.md](docs/RESULTS.md)."]
+    return out
+
+
+def replace_block(path, lines: list[str]) -> None:
+    text = path.read_text()
     if START not in text or END not in text:
-        raise SystemExit("README.md is missing the RESULTS markers")
-    body = "\n".join([START, "", *scoring_section(), *detection_section(), "", END])
+        raise SystemExit(f"{path.name} is missing the RESULTS markers")
     before, rest = text.split(START, 1)
     after = rest.split(END, 1)[1]
-    README.write_text(before + body + after)
-    print("Updated results section in README.md")
+    path.write_text(before + "\n".join([START, "", *lines, "", END]) + after)
 
+
+def main() -> None:
+    write_credits()
+    replace_block(README, summary_section())
+    replace_block(RESULTS_DOC, [*scoring_section(), *detection_section()])
+    print("Updated results in README.md and docs/RESULTS.md")
 
 if __name__ == "__main__":
     main()

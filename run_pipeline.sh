@@ -17,6 +17,6 @@ $PY -m src.detector                       # detections for every recording -> DB
 $PY -m src.evaluate --test --snr-sweep --ablation
 $PY -m src.report                         # results/detection_report.json
 $PY -m src.plots                          # results/*.png
-$PY -m src.readme_results                 # README results section + CREDITS.md
+$PY -m src.readme_results                 # README summary, docs/RESULTS.md, CREDITS.md
 .venv/bin/jupyter nbconvert --to notebook --execute --inplace notebooks/eda.ipynb
 $PY -m pytest -q
